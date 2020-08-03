@@ -8,20 +8,23 @@ keyboard.keys.set(' ', {
     down: console.log
 });
 
-const forwardDelegate = console.log;
-const forwardSchema = [
+const schemata = [
     {
-        key: 'Enter',
-        handlers: {
-            up: 'EnterUp',
-            down: 'EnterDown'
-        }
+        name: 'test',
+        keys: [
+            {
+                name: 'Enter',
+                handlers: {
+                    up: 'EnterUp',
+                    down: 'EnterDown'
+                }
+            }
+        ]
     }
 ];
 
-const schema = keyboard.createForwardSchema(forwardSchema, forwardDelegate);
+const schema = keyboard.loadSchemata(schemata, console.log);
 
-keyboard.schemata.set('test', schema);
 keyboard.applySchema('test');
 
 document.body.style.visibility = 'visible';

@@ -10,19 +10,29 @@ export class Keyboard extends quantum.Component {
         document.addEventListener('keyup', event => this.keys.get(event.key)?.up?.(event));
     }
 
-    createForwardSchema(options, delegate) {
-        return options.map(option => {
-            for (const [name, value] of Object.entries(option.handlers)) {
-                option.handlers[name] = event => delegate(value, event);
+    loadSchemata(schemata, delegate) {
+        for (const schema of schemata) {
+            const keys = [];
+            for (const key of schema.keys) {
+                const handlers = {};
+                for (const [name, value] of Object.entries(key.handlers)) {
+                    handlers[name] = event => delegate(value, event);
+                }
+
+                keys.push({ name: key.name, handlers });
             }
 
-            return option;
-        });
+            this.schemata.set(schema.name, keys);
+        }
     }
 
-    applySchema(name) {
-        for (const schema of this.schemata.get(name)) {
-            this.keys.set(schema.key, Object.assign(this.keys.get(schema.key) || {}, schema.handlers));
+    applySchema(schema) {
+        for (const { name, handlers } of this.schemata.get(schema)) {
+            if (this.keys.has(name)) {
+                Object.assign(this.keys.get(name), handlers);
+            } else {
+                this.keys.set(name, handlers);
+            }
         }
     }
 }
