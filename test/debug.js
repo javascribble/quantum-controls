@@ -23,8 +23,7 @@ const schemata = [
     }
 ];
 
-const schema = keyboard.loadSchemata(schemata, console.log);
-
+keyboard.loadSchemata(schemata, console.log);
 keyboard.applySchema('test');
 
 document.body.style.visibility = 'visible';
