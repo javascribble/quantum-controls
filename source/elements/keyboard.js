@@ -38,11 +38,6 @@ export class Keyboard extends quantum.Component {
             }
         }
     }
-
-    reset() {
-        this.schemata.clear();
-        this.keys.clear();
-    }
 }
 
 quantum.define('quantum-keyboard', Keyboard);
