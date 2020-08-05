@@ -1,5 +1,5 @@
-export const createKeyboardBrokerAdapter = (keyboard, configuration) => ({
-    connect: broker => {
+export const createKeyboardBrokerAdapter = configuration => ({
+    adapt: (keyboard, broker) => {
         const { schemata, defaultSchemata } = configuration;
         for (const { name, keys } of schemata) {
             keyboard.schemata.set(name, {
@@ -14,7 +14,7 @@ export const createKeyboardBrokerAdapter = (keyboard, configuration) => ({
         defaultSchemata?.forEach(index => keyboard.activate(schemata[index].name));
         broker.subscribe('activate', keyboard.activate.bind(keyboard));
     },
-    disconnect: broker => {
+    preserve: (keyboard, broker) => {
         broker.unsubscribe('activate', keyboard.activate.bind(keyboard));
         keyboard.reset();
     }
