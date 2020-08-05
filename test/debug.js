@@ -1,5 +1,5 @@
 import '/node_modules/@javascribble/quantum/source/main.js';
-import '/source/main.js';
+import { createKeyboardBrokerAdapter } from '/source/main.js';
 
 const keyboard = document.querySelector('quantum-keyboard');
 
@@ -8,22 +8,35 @@ keyboard.keys.set(' ', {
     down: console.log
 });
 
-const schemata = [
-    {
-        name: 'test',
-        keys: [
-            {
-                name: 'Enter',
-                handlers: {
-                    up: 'EnterUp',
-                    down: 'EnterDown'
+const configuration = {
+    defaultSchemata: [0],
+    schemata: [
+        {
+            name: 'test',
+            keys: [
+                {
+                    name: 'Enter',
+                    handlers: [
+                        {
+                            name: 'up',
+                            delegate: 'EnterUp',
+                        },
+                        {
+                            name: 'down',
+                            delegate: 'EnterDown'
+                        }
+                    ]
                 }
-            }
-        ]
-    }
-];
+            ]
+        }
+    ]
+};
 
-keyboard.loadSchemata(schemata, console.log);
-keyboard.applySchema('test');
+const broker = new quantum.EventBroker();
+broker.subscribe('EnterUp', console.log);
+broker.subscribe('EnterDown', console.log);
+
+const adapter = createKeyboardBrokerAdapter(keyboard, configuration);
+adapter.connect(broker);
 
 document.body.style.visibility = 'visible';

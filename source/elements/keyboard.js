@@ -2,38 +2,46 @@ export class Keyboard extends quantum.Component {
     schemata = new Map();
     keys = new Map();
 
-    constructor() {
-        super();
-
-        //document.addEventListener('keypress', event => this.keys.get(event.key)?.press?.(event));
-        document.addEventListener('keydown', event => this.keys.get(event.key)?.down?.(event));
-        document.addEventListener('keyup', event => this.keys.get(event.key)?.up?.(event));
+    connectedCallback() {
+        this.subscribe();
     }
 
-    loadSchemata(schemata, delegate) {
-        for (const schema of schemata) {
-            const keys = [];
-            for (const key of schema.keys) {
-                const handlers = {};
-                for (const [name, value] of Object.entries(key.handlers)) {
-                    handlers[name] = event => delegate(value, event);
-                }
-
-                keys.push({ name: key.name, handlers });
-            }
-
-            this.schemata.set(schema.name, keys);
-        }
+    disconnectedCallback() {
+        this.unsubscribe();
     }
 
-    applySchema(schema) {
-        for (const { name, handlers } of this.schemata.get(schema)) {
+    subscribe() {
+        this.parentElement.addEventListener('keydown', this.keyDown.bind(this));
+        this.parentElement.addEventListener('keyup', this.keyUp.bind(this));
+    }
+
+    unsubscribe() {
+        this.parentElement.removeEventListener('keydown', this.keyDown.bind(this));
+        this.parentElement.removeEventListener('keyup', this.keyUp.bind(this));
+    }
+
+    keyDown(event) {
+        this.keys.get(event.key)?.down?.(event);
+    }
+
+    keyUp(event) {
+        this.keys.get(event.key)?.up?.(event);
+    }
+
+    activate(schema) {
+        const { keys } = this.schemata.get(schema);
+        for (const { name, handlers } of keys) {
             if (this.keys.has(name)) {
                 Object.assign(this.keys.get(name), handlers);
             } else {
                 this.keys.set(name, handlers);
             }
         }
+    }
+
+    reset() {
+        this.schemata.clear();
+        this.keys.clear();
     }
 }
 
