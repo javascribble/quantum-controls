@@ -1,7 +1,8 @@
 import '/node_modules/@javascribble/quantum/source/main.js';
-import { keyboardBrokerAdapter } from '/source/main.js';
+import { Keyboard, keyboardBrokerAdapter } from '/source/main.js';
 
-const keyboard = document.querySelector('quantum-keyboard');
+const keyboard = new Keyboard();
+keyboard.subscribe();
 keyboard.keys.set(' ', {
     up: console.log,
     down: console.log
