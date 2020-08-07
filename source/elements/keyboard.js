@@ -1,33 +1,10 @@
 export class Keyboard extends quantum.Component {
     schemata = new Map();
     keys = new Map();
-    broker;
-
-    #keyDown(event) {
-        if (this.keys.has(event.key)) {
-            const delegate = this.keys.get(event.key).down;
-            if (typeof delegate === 'string') {
-                this.broker.publish(delegate, event);
-            } else {
-                delegate(event);
-            }
-        }
-    }
-
-    #keyUp(event) {
-        if (this.keys.has(event.key)) {
-            const delegate = this.keys.get(event.key).up;
-            if (typeof delegate === 'string') {
-                this.broker.publish(delegate, event);
-            } else {
-                delegate(event);
-            }
-        }
-    }
 
     connectedCallback() {
-        this.parentElement.addEventListener('keydown', this.#keyDown.bind(this));
-        this.parentElement.addEventListener('keyup', this.#keyUp.bind(this));
+        this.parentElement.addEventListener('keydown', event => this.keys.get(event.key)?.down?.(event));
+        this.parentElement.addEventListener('keyup', event => this.keys.get(event.key)?.up?.(event));
     }
 
     activate(schema) {
@@ -40,18 +17,19 @@ export class Keyboard extends quantum.Component {
         }
     }
 
-    integrate(broker) {
-        broker.subscribe('activate', this.activate.bind(this));
-        this.broker = broker;
-    }
-
-    configure(options) {
+    configure(options, state) {
+        const { broker } = state;
         const { schemata, defaultSchemata } = options;
         for (const schema of schemata) {
-            this.schemata.set(schema.name, schema.keys);
+            this.schemata.set(schema.name, schema.keys.map(key => ({
+                name: key.name,
+                handlers: Object.fromEntries(Object.entries(key.handlers).map(entry => [entry[0], event => broker.publish(entry[1], event)]))
+            })));
         }
 
         defaultSchemata?.forEach(index => this.activate(schemata[index].name));
+
+        broker.subscribe('activate', this.activate.bind(this));
     }
 }
 
