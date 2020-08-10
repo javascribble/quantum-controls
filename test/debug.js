@@ -30,6 +30,6 @@ const broker = new quantum.EventBroker();
 broker.subscribe('EnterUp', console.log);
 broker.subscribe('EnterDown', console.log);
 
-keyboard.configure(options, { broker });
+keyboard.configure({ options, broker });
 
 document.body.style.visibility = 'visible';

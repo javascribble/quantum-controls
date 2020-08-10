@@ -17,8 +17,8 @@ export class Keyboard extends quantum.Component {
         }
     }
 
-    configure(options, state) {
-        const { broker } = state;
+    configure(state) {
+        const { broker, options } = state;
         const { schemata, defaultSchemata } = options;
         for (const schema of schemata) {
             this.schemata.set(schema.name, schema.keys.map(key => ({
