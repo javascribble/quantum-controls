@@ -17,8 +17,8 @@ export class Keyboard extends quantum.Component {
         }
     }
 
-    configure(state) {
-        const { broker, options } = state;
+    integrate(api) {
+        const { broker, options } = api;
         const { schemata, defaultSchemata } = options;
         for (const schema of schemata) {
             this.schemata.set(schema.name, schema.keys.map(key => ({
@@ -28,8 +28,10 @@ export class Keyboard extends quantum.Component {
         }
 
         defaultSchemata?.forEach(index => this.activate(schemata[index].name));
+        broker.subscribe('activateSchema', this.activate.bind(this));
+        api.activateKeyboardSchema = this.activate.bind(this);
 
-        broker.subscribe('activate', this.activate.bind(this));
+        // TODO: Add more control for both independent keyboard and aggregate input.
     }
 }
 

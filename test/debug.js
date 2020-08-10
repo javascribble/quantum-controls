@@ -9,7 +9,7 @@ keyboard.keys.set(' ', {
 });
 
 const options = {
-    defaultSchemata: [0],
+    //defaultSchemata: [0],
     schemata: [
         {
             name: 'test',
@@ -30,6 +30,9 @@ const broker = new quantum.EventBroker();
 broker.subscribe('EnterUp', console.log);
 broker.subscribe('EnterDown', console.log);
 
-keyboard.configure({ options, broker });
+const api = { options, broker };
+keyboard.integrate(api);
+api.activateKeyboardSchema('test');
+//broker.publish('activateSchema', 'test');
 
 document.body.style.visibility = 'visible';
