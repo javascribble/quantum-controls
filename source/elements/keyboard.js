@@ -3,8 +3,17 @@ export class Keyboard extends quantum.Component {
     keys = new Map();
 
     connectedCallback() {
-        this.parentElement.addEventListener('keydown', event => this.keys.get(event.key)?.down?.(event));
-        this.parentElement.addEventListener('keyup', event => this.keys.get(event.key)?.up?.(event));
+        this.parentElement.addEventListener('keydown', event => {
+            if (!event.repeat) {
+                this.keys.get(event.key)?.down?.(event);
+            }
+        });
+
+        this.parentElement.addEventListener('keyup', event => {
+            if (!event.repeat) {
+                this.keys.get(event.key)?.up?.(event);
+            }
+        });
     }
 
     activate(schema) {
