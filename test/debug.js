@@ -15,13 +15,13 @@ broker.subscribe('EnterDown', console.log);
 const schema = [
     {
         key: 'Enter',
-        events: {
-            up: 'EnterUp',
-            down: 'EnterDown'
+        handlers: {
+            up: event => broker.publish('EnterUp', event),
+            down: event => broker.publish('EnterDown', event)
         }
     }
 ];
 
-keyboard.delegate(broker, schema);
+keyboard.apply(schema);
 
 document.body.style.visibility = 'visible';
