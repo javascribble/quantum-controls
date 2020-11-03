@@ -1,2 +1,2 @@
 export * from './elements/keyboard.js';
-export * from './plugins/broker.js';
+export * from './plugins/schema.js';
