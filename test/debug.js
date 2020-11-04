@@ -1,5 +1,5 @@
-import '/node_modules/@javascribble/quantum/source/global.js';
-import '/source/global.js';
+import '/node_modules/@javascribble/quantum/source/export.js';
+import '/source/export.js';
 
 const keyboard = document.querySelector('quantum-keyboard');
 
@@ -23,9 +23,5 @@ const schema = [
 ];
 
 keyboard.apply(schema);
-
-const adapter = {};
-keyboard.adapt(adapter);
-console.log(adapter);
 
 document.body.style.visibility = 'visible';

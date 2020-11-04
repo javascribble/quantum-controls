@@ -1,4 +1,6 @@
-export class Keyboard extends quantum.Component {
+import { Plugin, define } from '../import.js';
+
+export class Keyboard extends Plugin {
     keys = new Map();
 
     connectedCallback() {
@@ -16,8 +18,9 @@ export class Keyboard extends quantum.Component {
     }
 
     adapt(api) {
+        super.adapt(api);
         api.keys = this.keys;
     }
 }
 
-quantum.define('quantum-keyboard', Keyboard);
+define('quantum-keyboard', Keyboard);

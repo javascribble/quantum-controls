@@ -1,0 +1,1 @@
+export const { Component, Plugin, plugin, define } = quantum;
