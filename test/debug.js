@@ -24,4 +24,8 @@ const schema = [
 
 keyboard.apply(schema);
 
+const adapter = {};
+keyboard.adapt(adapter);
+console.log(adapter);
+
 document.body.style.visibility = 'visible';

@@ -14,6 +14,10 @@ export class Keyboard extends quantum.Component {
             }
         });
     }
+
+    adapt(api) {
+        api.keys = this.keys;
+    }
 }
 
 quantum.define('quantum-keyboard', Keyboard);
