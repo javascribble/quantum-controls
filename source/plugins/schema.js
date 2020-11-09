@@ -1,5 +1,5 @@
-import { Keyboard } from '../elements/keyboard.js';
 import { plugin } from '../import.js';
+import { Keyboard } from '../elements/keyboard.js';
 
 function apply(schema) {
     for (const { key, handlers } of schema) {
