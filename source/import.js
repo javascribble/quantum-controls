@@ -1,1 +1,1 @@
-export const { Plugin, plugin, define } = quantum;
+export const { Component, define } = quantum;

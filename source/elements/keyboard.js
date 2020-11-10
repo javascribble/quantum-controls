@@ -1,25 +1,24 @@
-import { Plugin, define } from '../import.js';
+import { Component, define } from '../import.js';
 
-export class Keyboard extends Plugin {
-    keys = new Map();
+export class Keyboard extends Component {
+    #keys = {};
 
     connectedCallback() {
         this.parentElement.addEventListener('keydown', event => {
             if (!event.repeat) {
-                this.keys.get(event.key)?.down?.(event);
+                this.#keys[event.key] = true;
             }
         });
 
         this.parentElement.addEventListener('keyup', event => {
             if (!event.repeat) {
-                this.keys.get(event.key)?.up?.(event);
+                this.#keys[event.key] = false;
             }
         });
     }
 
-    adapt(api) {
-        super.adapt(api);
-        api.keys = this.keys;
+    getKey(key) {
+        return this.#keys[key];
     }
 }
 
