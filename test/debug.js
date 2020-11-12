@@ -1,10 +1,14 @@
 import '/node_modules/@javascribble/quantum/source/export.js';
 import '/source/export.js';
 
-const keyboard = document.querySelector('quantum-keyboard');
+const options = {
 
+};
+
+const input = document.querySelector('quantum-input');
+const adapter = input.adapt(options);
 quantum.animate(time => {
-    console.log(keyboard.getKey(' '));
+    console.log(adapter.getButton(' '));
     return true;
 });
 

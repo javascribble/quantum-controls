@@ -1,7 +1,7 @@
 {
-    "name": "@javascribble/quantum-keyboard",
+    "name": "@javascribble/quantum-input",
     "description": "",
-    "version": "1.0.2",
+    "version": "0.0.0",
     "license": "MIT",
     "dependencies": {
         "@javascribble/quantum": "^1.0.5"
@@ -14,13 +14,13 @@
         "postversion": "npm publish --access public"
     },
     "main": "./source/main.js",
-    "homepage": "https://github.com/javascribble/quantum-keyboard#readme",
+    "homepage": "https://github.com/javascribble/quantum-input#readme",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/javascribble/quantum-keyboard.git"
+        "url": "git+https://github.com/javascribble/quantum-input.git"
     },
     "bugs": {
-        "url": "https://github.com/javascribble/quantum-keyboard/issues"
+        "url": "https://github.com/javascribble/quantum-input/issues"
     },
     "keywords": [
         "web",

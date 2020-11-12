@@ -1,7 +1,7 @@
-import { Keyboard } from '../elements/keyboard.js';
+import { Input } from '../elements/input.js';
 
-Keyboard.prototype.adapt = async function (options) {
+Input.prototype.adapt = function (options) {
     return {
-        getKey: this.getKey.bind(this)
+        getButton: this.getKey.bind(this)
     }
 };
