@@ -23,7 +23,6 @@ export class Input extends Component {
         parent.addEventListener('mousemove', event => { });
         parent.addEventListener('mouseup', event => { });
         parent.addEventListener('mousewheel', event => { });
-        parent.addEventListener('contextmenu', event => event.preventDefault());
 
         parent.addEventListener('touchstart', event => { });
         parent.addEventListener('touchmove', event => { });
