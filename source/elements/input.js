@@ -19,18 +19,18 @@ export class Input extends Component {
             }
         });
 
-        parent.addEventListener('mousedown', event => { });
-        parent.addEventListener('mousemove', event => { });
-        parent.addEventListener('mouseup', event => { });
-        parent.addEventListener('mousewheel', event => { });
+        // parent.addEventListener('mousedown', event => { },);
+        // parent.addEventListener('mousemove', event => { });
+        // parent.addEventListener('mouseup', event => { });
+        // parent.addEventListener('mousewheel', event => { }, { passive: true });
 
-        parent.addEventListener('touchstart', event => { });
-        parent.addEventListener('touchmove', event => { });
-        parent.addEventListener('touchend', event => { });
-        parent.addEventListener('touchcancel', event => { });
+        // parent.addEventListener('touchstart', event => { }, { passive: true });
+        // parent.addEventListener('touchmove', event => { }, { passive: true });
+        // parent.addEventListener('touchend', event => { }, { passive: true });
+        // parent.addEventListener('touchcancel', event => { });
 
-        parent.addEventListener('ongamepadconnected', event => this.#gamepads.add(event.gamepad));
-        parent.addEventListener('ongamepaddisconnected', event => this.#gamepads.delete(event.gamepad));
+        // parent.addEventListener('ongamepadconnected', event => this.#gamepads.add(event.gamepad));
+        // parent.addEventListener('ongamepaddisconnected', event => this.#gamepads.delete(event.gamepad));
     }
 
     getKey(key) {
