@@ -33,7 +33,7 @@ export class Input extends Component {
         // parent.addEventListener('ongamepaddisconnected', event => this.#gamepads.delete(event.gamepad));
     }
 
-    getKey(key) {
+    getButton(key) {
         return this.#keys[key];
     }
 }
