@@ -37,10 +37,6 @@ export class Input extends Component {
         return this.#keys[key];
     }
 
-    getGesture() {
-
-    }
-
     getPointer() {
 
     }
