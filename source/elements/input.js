@@ -36,6 +36,18 @@ export class Input extends Component {
     getButton(key) {
         return this.#keys[key];
     }
+
+    getGesture() {
+
+    }
+
+    getPointer() {
+
+    }
+
+    getAxis() {
+
+    }
 }
 
 define('quantum-input', Input);
