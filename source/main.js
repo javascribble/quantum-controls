@@ -1,2 +1,3 @@
-export * from './adapters/engine.js';
-export * from './elements/input.js';
+import * as input from './elements/input.js';
+
+Object.assign(window, input);

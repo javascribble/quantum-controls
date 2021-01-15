@@ -1,5 +1,3 @@
-import { Component, define } from '../import.js';
-
 export class Input extends Component {
     #gamepads = navigator.getGamepads ? navigator.getGamepads() : navigator.webkitGetGamepads();
     #keys = {};
@@ -43,6 +41,12 @@ export class Input extends Component {
 
     getAxis() {
 
+    }
+
+    adapt(api) {
+        api.getButton = this.getButton.bind(this);
+        api.getPointer = this.getPointer.bind(this);
+        api.getAxis = this.getAxis.bind(this);
     }
 }
 
