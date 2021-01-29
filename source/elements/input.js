@@ -1,6 +1,4 @@
-const { Component, template, define } = quantum;
-
-export class Input extends Component {
+export class Input extends Quantum {
     #gamepads = navigator.getGamepads ? navigator.getGamepads() : navigator.webkitGetGamepads();
     #keys = {};
 
@@ -52,4 +50,4 @@ export class Input extends Component {
     }
 }
 
-define('quantum-input', Input);
+Input.define('quantum-input');

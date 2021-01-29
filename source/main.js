@@ -1,3 +1,3 @@
-import * as input from './elements/input.js';
+import { Input } from './elements/input.js';
 
-Object.assign(quantum, input);
+Quantum.Input = Input

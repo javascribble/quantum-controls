@@ -3,7 +3,7 @@ import '/source/main.js';
 
 const input = document.querySelector('quantum-input');
 
-animate(time => {
+quantum.animate(time => {
     console.log(input.getButton(' '));
     return true;
 });
