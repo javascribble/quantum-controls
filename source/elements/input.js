@@ -49,5 +49,3 @@ export class Input extends Quantum {
         api.getAxis = this.getAxis.bind(this);
     }
 }
-
-Input.define('quantum-input');
