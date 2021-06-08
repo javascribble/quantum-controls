@@ -1,51 +1,21 @@
 export class Input extends Quantum {
-    #gamepads = navigator.getGamepads ? navigator.getGamepads() : navigator.webkitGetGamepads();
-    #keys = {};
+    static events = new Map();
+
+    constructor() {
+        super();
+
+        this.setAttribute('tabindex', 0);
+    }
 
     connectedCallback() {
-        const parent = this.parentElement;
-
-        parent.addEventListener('keydown', event => {
-            if (!event.repeat) {
-                this.#keys[event.key] = true;
-            }
-        });
-
-        parent.addEventListener('keyup', event => {
-            if (!event.repeat) {
-                this.#keys[event.key] = false;
-            }
-        });
-
-        // parent.addEventListener('mousedown', event => { },);
-        // parent.addEventListener('mousemove', event => { });
-        // parent.addEventListener('mouseup', event => { });
-        // parent.addEventListener('mousewheel', event => { }, { passive: true });
-
-        // parent.addEventListener('touchstart', event => { }, { passive: true });
-        // parent.addEventListener('touchmove', event => { }, { passive: true });
-        // parent.addEventListener('touchend', event => { }, { passive: true });
-        // parent.addEventListener('touchcancel', event => { });
-
-        // parent.addEventListener('ongamepadconnected', event => this.#gamepads.add(event.gamepad));
-        // parent.addEventListener('ongamepaddisconnected', event => this.#gamepads.delete(event.gamepad));
+        for (const [event, handler] of Input.events) {
+            this.addEventListener(event, handler, { passive: true });
+        }
     }
 
-    getButton(key) {
-        return this.#keys[key];
-    }
-
-    getPointer() {
-
-    }
-
-    getAxis() {
-
-    }
-
-    adapt(api) {
-        api.getButton = this.getButton.bind(this);
-        api.getPointer = this.getPointer.bind(this);
-        api.getAxis = this.getAxis.bind(this);
+    disconnectedCallback() {
+        for (const [event, handler] of Input.events) {
+            this.removeEventListener(event, handler, { passive: true });
+        }
     }
 }
