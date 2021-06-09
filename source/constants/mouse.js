@@ -4,5 +4,5 @@ export const mouse = {
     AUXILIARY1: 2, // wheel
     AUXILIARY2: 3, // back
     AUXILIARY3: 4, // forward
-    MOVE: 'move'
+    MOVE: 'mousemove'
 };
