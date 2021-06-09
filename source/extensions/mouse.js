@@ -1,14 +1,33 @@
+import { mouse } from '../constants/mouse.js';
 import { Input } from '../elements/input.js';
 
-const mousedown = event => { };
-const mousemove = event => { };
-const mouseup = event => { };
-const mousewheel = event => { };
+const { events, devices } = Input;
 
-Input.events.set('mousedown', mousedown);
-Input.events.set('mousemove', mousemove);
-Input.events.set('mouseup', mouseup);
-Input.events.set('mousewheel', mousewheel);
-
-Input.prototype.getMouse = function (mouse) {
+events.mousedown = event => {
+    const { target } = event;
+    const control = target.controls[event.button];
+    if (control) {
+        target[control] = true;
+    }
 };
+
+events.mouseup = event => {
+    const { target } = event;
+    const control = target.controls[event.button];
+    if (control) {
+        target[control] = false;
+    }
+};
+
+events.mousemove = event => {
+    const { target } = event;
+    const control = target.controls[mouse.MOVE];
+    if (control) {
+        target[control] = event;
+    }
+};
+
+events.mousewheel = event => {
+};
+
+devices.mouse = mouse;

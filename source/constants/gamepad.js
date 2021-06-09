@@ -1,0 +1,23 @@
+export const gamepad = {
+    UP: 'PAD_UP',
+    DOWN: 'PAD_DOWN',
+    LEFT: 'PAD_LEFT',
+    RIGHT: 'PAD_RIGHT',
+    BUTTON1: 'PAD_FACE_1',
+    BUTTON2: 'PAD_FACE_2',
+    BUTTON3: 'PAD_FACE_3',
+    BUTTON4: 'PAD_FACE_4',
+    L1: 'PAD_L_SHOULDER_1',
+    R1: 'PAD_R_SHOULDER_1',
+    L2: 'PAD_L_SHOULDER_2',
+    R2: 'PAD_R_SHOULDER_2',
+    L3: 'PAD_L_STICK_BUTTON',
+    R3: 'PAD_R_STICK_BUTTON',
+    SPECIAL: 'PAD_VENDOR',
+    LSTICKX: 'PAD_L_STICK_X',
+    LSTICKY: 'PAD_L_STICK_Y',
+    RSTICKX: 'PAD_R_STICK_X',
+    RSTICKY: 'PAD_R_STICK_Y',
+    SELECT: 'PAD_SELECT',
+    START: 'PAD_START'
+};

@@ -1,14 +1,11 @@
+import { touch } from '../constants/touch.js';
 import { Input } from '../elements/input.js';
 
-const touchstart = event => { };
-const touchmove = event => { };
-const touchend = event => { };
-const touchcancel = event => { };
+const { events, devices } = Input;
 
-Input.events.set('touchstart', touchstart);
-Input.events.set('touchmove', touchmove);
-Input.events.set('touchend', touchend);
-Input.events.set('touchcancel', touchcancel);
+events.touchstart = event => { };
+events.touchend = event => { };
+events.touchmove = event => { };
+events.touchcancel = event => { };
 
-Input.prototype.getTouch = function (mouse) {
-};
+devices.touch = touch;

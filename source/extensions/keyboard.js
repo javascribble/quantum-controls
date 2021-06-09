@@ -1,22 +1,26 @@
+import { keyboard } from '../constants/keyboard.js';
 import { Input } from '../elements/input.js';
 
-const keydown = event => {
+const { events, devices } = Input;
+
+events.keydown = event => {
     const { target, repeat, key } = event;
     if (!repeat) {
-        target[key] = true;
+        const control = target.controls[key];
+        if (control) {
+            target[control] = true;
+        }
     }
 };
 
-const keyup = event => {
+events.keyup = event => {
     const { target, repeat, key } = event;
     if (!repeat) {
-        target[key] = false;
+        const control = target.controls[key];
+        if (control) {
+            target[control] = false;
+        }
     }
 };
 
-Input.events.set('keydown', keydown);
-Input.events.set('keyup', keyup);
-
-Input.prototype.getKey = function (key) {
-    return this[key];
-};
+devices.keyboard = keyboard;

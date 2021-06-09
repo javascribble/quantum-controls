@@ -7,9 +7,25 @@ import '/source/main.js';
 
 const input = document.querySelector('quantum-input');
 
+const { gamepad, keyboard, mouse, touch } = input.constructor.devices;
+
+const controls = {
+    ACTION: 'ACTION',
+    POINTER: 'POINTER'
+};
+
+input.controls[keyboard.UP] = controls.ACTION;
+input.controls[mouse.PRIMARY] = controls.ACTION;
+input.controls[mouse.MOVE] = controls.POINTER;
+
 const animation = quantum.animate(time => {
-    if (input.getKey('a')) {
-        console.log('a key down');
+    if (input[controls.ACTION]) {
+        console.log('button pressed');
+    }
+
+    const pointer = input[controls.POINTER];
+    if (pointer) {
+        console.log(pointer);
     }
 });
 
