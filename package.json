@@ -1,17 +1,16 @@
 {
     "name": "@javascribble/quantum-input",
     "description": "",
-    "version": "1.2.7",
+    "version": "1.4.0",
     "license": "MIT",
     "dependencies": {
-        "@javascribble/quantum": "^1.2.12"
+        "@javascribble/quantum": "^1.5.0"
     },
     "devDependencies": {
-        "@javascribble/rollup-quantum-build": "^1.1.1",
         "live-server": "*"
     },
     "scripts": {
-        "build": "node ./node_modules/@javascribble/rollup-quantum-build/source/main.js ./source/main.js ./build",
+        "build": "cd ../rollup-quantum-build && npm start ../quantum-input/source/main.js ../quantum-input/build",
         "start": "live-server --open=/test/debug.html",
         "postversion": "npm publish --access public"
     },
