@@ -1,12 +1,6 @@
 export class Input extends Quantum {
     controls = {};
 
-    constructor() {
-        super();
-
-        this.setAttribute('tabindex', 0);
-    }
-
     static events = {};
     static devices = {};
 
