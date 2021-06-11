@@ -10,7 +10,7 @@
         "live-server": "*"
     },
     "scripts": {
-        "build": "cd ../rollup-quantum-build && npm start ../quantum-input/source/main.js ../quantum-input/build",
+        "build": "cd ../rollup-quantum-build && npm start ../quantum-input/source ../quantum-input/build",
         "start": "live-server --open=/test/debug.html",
         "postversion": "npm publish --access public"
     },
