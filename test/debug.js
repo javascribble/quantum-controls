@@ -1,6 +1,5 @@
 import '/node_modules/@javascribble/quantum/source/main.js';
 import '/source/main.js';
-
 import '/source/plugins/gamepad.js';
 import '/source/plugins/keyboard.js';
 import '/source/plugins/mouse.js';
