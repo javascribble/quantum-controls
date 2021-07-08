@@ -1,6 +1,8 @@
 import { mouse } from '../constants/mouse.js';
 
-export const addMouse = input => {
+const { Input } = Quantum;
+
+Input.plugins.add(input => {
     const { events, devices } = input;
 
     events.mousedown = event => {
@@ -28,4 +30,4 @@ export const addMouse = input => {
     };
 
     devices.mouse = mouse;
-};
+});
