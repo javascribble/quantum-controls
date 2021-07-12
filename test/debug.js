@@ -1,9 +1,6 @@
-import '/node_modules/@javascribble/quantum/source/main.js';
-import '/source/main.js';
-import '/source/plugins/gamepad.js';
-import '/source/plugins/keyboard.js';
-import '/source/plugins/mouse.js';
-import '/source/plugins/touch.js';
+import '/node_modules/@javascribble/quantum/bundles/main-window.js';
+import '/bundles/main.js';
+import '/bundles/main-plugins.js';
 
 const input = document.querySelector('quantum-input');
 

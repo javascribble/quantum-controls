@@ -27,3 +27,5 @@ export class Input extends Quantum {
         }
     }
 }
+
+Input.define('quantum-input');
