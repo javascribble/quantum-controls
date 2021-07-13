@@ -1,3 +1,8 @@
+import { addGamepad } from '../devices/gamepad.js';
+import { addKeyboard } from '../devices/keyboard.js';
+import { addMouse } from '../devices/mouse.js';
+import { addTouch } from '../devices/touch.js';
+
 export class Input extends Quantum {
     events = {};
     devices = {};
@@ -6,12 +11,11 @@ export class Input extends Quantum {
     constructor() {
         super();
 
-        for (const plugin of Input.plugins) {
-            plugin(this);
-        }
+        addGamepad(this);
+        addKeyboard(this);
+        addMouse(this);
+        addTouch(this);
     }
-
-    static plugins = new Set();
 
     connectedCallback() {
         const parent = this.parentElement;

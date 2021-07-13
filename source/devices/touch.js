@@ -1,8 +1,6 @@
 import { touch } from '../constants/touch.js';
 
-const { Input } = Quantum;
-
-Input.plugins.add(input => {
+export const addTouch = input => {
     const { events, devices } = input;
 
     events.touchstart = event => { };
@@ -11,4 +9,4 @@ Input.plugins.add(input => {
     events.touchcancel = event => { };
 
     devices.touch = touch;
-});
+};

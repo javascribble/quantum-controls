@@ -1,8 +1,6 @@
 import { keyboard } from '../constants/keyboard.js';
 
-const { Input } = Quantum;
-
-Input.plugins.add(input => {
+export const addKeyboard = input => {
     const { events, devices } = input;
 
     events.keydown = event => {
@@ -26,4 +24,4 @@ Input.plugins.add(input => {
     };
 
     devices.keyboard = keyboard;
-});
+};
