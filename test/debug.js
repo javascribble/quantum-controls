@@ -1,6 +1,5 @@
 import '/node_modules/@javascribble/quantum/bundles/main-window.js';
 import '/bundles/main.js';
-import '/bundles/main-plugins.js';
 
 const input = document.querySelector('quantum-input');
 
