@@ -2,3 +2,10 @@ body {
     visibility: hidden;
     margin: 0;
 }
+
+#container {
+    overflow: auto;
+    resize: both;
+    width: 500px;
+    height: 500px;
+}
