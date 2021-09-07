@@ -4,6 +4,7 @@ body {
 }
 
 #container {
+    position: relative;
     overflow: auto;
     resize: both;
     width: 500px;

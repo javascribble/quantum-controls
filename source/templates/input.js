@@ -1,7 +1,7 @@
 export default `
 <style>
     :host {
-        display: block;
+        position: absolute;
         width: 100%;
         height: 100%;
         outline: none;
