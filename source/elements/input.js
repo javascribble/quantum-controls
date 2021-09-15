@@ -5,9 +5,10 @@ import { addTouch } from '../devices/touch.js';
 import input from '../templates/input.js';
 
 export class Input extends Quantum {
-    events = {};
-    devices = {};
     controls = {};
+    devices = {};
+    events = {};
+    state = {};
 
     constructor() {
         super();

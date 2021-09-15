@@ -1,20 +1,19 @@
 import '/node_modules/@javascribble/quantum/bundles/main-window.js';
 import '/bundles/main.js';
 
-const input = document.querySelector('quantum-input');
+const { controls, devices, state } = document.querySelector('quantum-input');
+const { gamepad, keyboard, mouse, touch } = devices;
 
-const { gamepad, keyboard, mouse, touch } = input.devices;
-
-const controls = {
-    ACTION: 'ACTION'
+const actions = {
+    ACTION1: 'ACTION1'
 };
 
-input.controls[keyboard.UP] = controls.ACTION;
-input.controls[mouse.PRIMARY] = controls.ACTION;
+controls[keyboard.UP] = actions.ACTION1;
+controls[mouse.PRIMARY] = actions.ACTION1;
 
 const animation = quantum.animate(time => {
-    if (input[controls.ACTION]) {
-        console.log('button pressed');
+    if (state[actions.ACTION1]) {
+        console.log('key or button pressed');
     }
 });
 

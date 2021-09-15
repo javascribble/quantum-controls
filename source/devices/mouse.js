@@ -1,31 +1,31 @@
 import { mouse } from '../constants/mouse.js';
 
 export const addMouse = input => {
-    const { events, devices } = input;
+    const { controls, devices, events, state } = input;
+
+    devices.mouse = mouse;
 
     events.mousedown = event => {
-        const control = input.controls[event.button];
+        const control = controls[event.button];
         if (control) {
-            input[control] = true;
+            state[control] = true;
         }
     };
 
     events.mouseup = event => {
-        const control = input.controls[event.button];
+        const control = controls[event.button];
         if (control) {
-            input[control] = false;
+            state[control] = false;
         }
     };
 
     events.mousemove = event => {
-        const control = input.controls[mouse.MOVE];
+        const control = controls[mouse.MOVE];
         if (control) {
-            input[control] = event;
+            state[control] = event;
         }
     };
 
     events.mousewheel = event => {
     };
-
-    devices.mouse = mouse;
 };

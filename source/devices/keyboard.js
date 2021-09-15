@@ -1,14 +1,16 @@
 import { keyboard } from '../constants/keyboard.js';
 
 export const addKeyboard = input => {
-    const { events, devices } = input;
+    const { controls, devices, events, state } = input;
+
+    devices.keyboard = keyboard;
 
     events.keydown = event => {
         const { repeat, key } = event;
         if (!repeat) {
-            const control = input.controls[key];
+            const control = controls[key];
             if (control) {
-                input[control] = true;
+                state[control] = true;
             }
         }
     };
@@ -16,12 +18,10 @@ export const addKeyboard = input => {
     events.keyup = event => {
         const { repeat, key } = event;
         if (!repeat) {
-            const control = input.controls[key];
+            const control = controls[key];
             if (control) {
-                input[control] = false;
+                state[control] = false;
             }
         }
     };
-
-    devices.keyboard = keyboard;
 };
