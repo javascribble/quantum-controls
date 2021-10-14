@@ -2,12 +2,12 @@ import { addGamepad } from '../devices/gamepad.js';
 import { addKeyboard } from '../devices/keyboard.js';
 import { addMouse } from '../devices/mouse.js';
 import { addTouch } from '../devices/touch.js';
-import input from '../templates/input.js';
+import controls from '../templates/controls.js';
 
-export class Input extends Quantum {
-    controls = {};
+export class Controls extends Quantum {
     devices = {};
     events = {};
+    inputs = {};
     state = {};
 
     constructor() {
@@ -36,4 +36,4 @@ export class Input extends Quantum {
     }
 }
 
-Input.define('quantum-input', input);
+Controls.define('quantum-controls', controls);

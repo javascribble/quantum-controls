@@ -1,5 +1,5 @@
 {
-    "name": "@javascribble/quantum-input",
+    "name": "@javascribble/quantum-controls",
     "description": "",
     "version": "1.6.0",
     "license": "MIT",
@@ -10,18 +10,18 @@
         "live-server": "*"
     },
     "scripts": {
-        "build": "cd ../rollup-quantum-build && npm start ../quantum-input",
+        "build": "cd ../rollup-quantum-build && npm start ../quantum-controls",
         "start": "live-server --open=/test/debug.html",
         "postversion": "npm run build && npm publish --access public"
     },
     "main": "./bundles/main.js",
-    "homepage": "https://github.com/javascribble/quantum-input#readme",
+    "homepage": "https://github.com/javascribble/quantum-controls#readme",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/javascribble/quantum-input.git"
+        "url": "git+https://github.com/javascribble/quantum-controls.git"
     },
     "bugs": {
-        "url": "https://github.com/javascribble/quantum-input/issues"
+        "url": "https://github.com/javascribble/quantum-controls/issues"
     },
     "keywords": [
         "web",

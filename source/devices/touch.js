@@ -1,7 +1,7 @@
 import { touch } from '../constants/touch.js';
 
-export const addTouch = input => {
-    const { controls, devices, events, state } = input;
+export const addTouch = element => {
+    const { devices, events, inputs, state } = element;
 
     devices.touch = touch;
 

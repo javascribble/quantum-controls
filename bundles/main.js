@@ -1,1 +1,1 @@
-export * from '../source/elements/input.js';
+export * from '../source/elements/controls.js';
